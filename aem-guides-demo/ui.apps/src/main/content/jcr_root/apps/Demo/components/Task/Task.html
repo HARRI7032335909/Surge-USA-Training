@@ -1,0 +1,61 @@
+<h1>Hello World Component</h1>
+
+<h1 data-sly-include="Demo.html"></h1>
+
+
+
+<sly data-sly-set.name="Vinni">
+<p>Name:${name}</p>
+</sly>
+
+
+<sly data-sly-test="${properties.age||properties.email}">
+    <p>Age:${properties.age}</p>
+    <p>Email:${properties.email}</p>
+    <p>${'yyyy-mm-dd' @format=properties.jcr:lastModified}</p>
+</sly>
+
+
+
+<ul data-sly-list="${properties.subjects}">
+    <li>${item}</li>
+</ul>
+
+
+
+<ul data-sly-list.variable="${properties.subjects}">
+    <li>Index:${variableList.index}:Count:${variableList.count}:First:${variableList.first}:middle:${variableList.middle}:Last:${variableList.last}</li>
+</ul>
+
+
+
+<ul data-sly-repeat.variable="${properties.subjects}">
+    <li>Index:${variableList.index}:Count:${variableList.count}:First:${variableList.first}:middle:${variableList.middle}:Last:${variableList.last}</li>
+</ul>
+
+
+
+<h1 data-sly-element="${'h3'}">Text</h1>
+
+
+
+<div data-sly-template.writeInfo>
+    <p>Text:${properties.text}</p>
+    <p>Age:${properties.age}</p>
+</div>
+<div data-sly-call="${writeInfo}"></div>
+
+
+
+<div data-sly-template.writedemo="${@ text,age}">
+    <p>Text:${text}</p>
+    <p>Age:${age}</p>
+</div>
+<div data-sly-call="${writedemo @text='text',age='10'}"></div>
+
+
+
++
+
+<div data-sly-text="${currentPage.title}">My page title</div>
+<div data-sly-resource="${'textnode' @resourceType='wknd/components/image'}"></div>
